@@ -52,7 +52,8 @@ main { flex: 1; display: flex; align-items: center; justify-content: center; pad
 }
 .zone:hover, .zone:focus-visible { transform: scale(1.12); outline: 2px solid var(--accent); }
 .zone.trouve { outline: 2px solid var(--accent); opacity: .6; }
-.zone.invisible { font-size: 0; }           /* zone posée sur un détail du décor, sans icône */
+.zone.invisible { font-size: 0; }
+.zone img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }           /* zone posée sur un détail du décor, sans icône */
 
 /* ===== Effet lampe torche (salle avec "torche": true) ===== */
 #torche {
@@ -71,6 +72,7 @@ main { flex: 1; display: flex; align-items: center; justify-content: center; pad
   background: #ffffff14; border-radius: 8px; padding: .3rem .6rem;
   white-space: nowrap; font-size: .9rem;
 }
+.objet img { height: 1.4em; vertical-align: middle; margin-right: .3em; }
 
 /* ===== Fenêtre (dialogue, énigme, débrief) ===== */
 #modal {
@@ -87,6 +89,7 @@ main { flex: 1; display: flex; align-items: center; justify-content: center; pad
 #modal-corps { line-height: 1.5; }
 #modal-corps p { margin-bottom: .6rem; }
 #modal-corps li { margin: 0 0 .5rem 1.1rem; }
+.illustration { display: block; width: 100%; border-radius: 8px; margin-bottom: .7rem; }
 #modal-boutons { display: flex; gap: .5rem; justify-content: flex-end; margin-top: 1rem; }
 .btn {
   background: var(--accent); color: #06231a; font-weight: 700;
