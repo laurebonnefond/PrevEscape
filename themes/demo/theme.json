@@ -22,63 +22,61 @@
   "salles": {
     "sas": {
       "nom": "Sas d'entrée",
-      "image": "images/sas.svg",
+      "image": "images/sas.jpg",
       "fond": "linear-gradient(160deg, #1d2b3a 0%, #0e1620 60%, #1a2a22 100%)",
       "indices": [
         "On n'entre pas dans un labo sans protéger ses yeux.",
         "Deux choses n'ont rien à faire ici : regarde la paillasse.",
-        "L'affiche au mur pose une question : réponds-y."
+        "Le document accroché au mur pose une question : réponds-y."
       ],
       "zones": [
         {
-          "x": 8,
-          "y": 55,
-          "w": 12,
-          "h": 22,
+          "x": 6.28,
+          "y": 48.35,
+          "w": 15.85,
+          "h": 13.82,
           "label": "Lunettes de protection",
           "type": "objet",
           "flag": "lunettes",
           "message": "Les lunettes de protection se portent dès l'entrée dans une zone où l'on manipule des produits chimiques.",
-          "image": "images/lunettes.svg"
+          "image": "images/lunettes.png"
         },
         {
-          "x": 34,
-          "y": 60,
-          "w": 11,
-          "h": 20,
-          "icone": "🧪",
-          "label": "Flacon sans étiquette",
+          "x": 32.9,
+          "y": 45.4,
+          "w": 11.2,
+          "h": 20.5,
+          "label": "Tube sans étiquette",
           "type": "risque",
           "flag": "risque_flacon",
-          "message": "Un produit transvasé doit toujours être réétiqueté : sans étiquette, impossible de connaître le danger."
+          "message": "Un produit transvasé doit toujours être réétiqueté : sans étiquette, impossible de connaître le danger.",
+          "illustration": "images/tube.jpg"
         },
         {
-          "x": 52,
-          "y": 62,
-          "w": 10,
-          "h": 18,
-          "icone": "☕",
+          "x": 50.8,
+          "y": 45.4,
+          "w": 11.3,
+          "h": 20.5,
           "label": "Tasse de café",
           "type": "risque",
           "flag": "risque_cafe",
-          "message": "On ne mange pas et on ne boit pas là où l'on manipule des produits chimiques : risque d'ingestion."
+          "message": "On ne mange pas et on ne boit pas là où l'on manipule des produits chimiques : risque d'ingestion.",
+          "illustration": "images/tasse.jpg"
         },
         {
-          "x": 68,
-          "y": 18,
-          "w": 12,
-          "h": 24,
-          "icone": "📋",
-          "label": "Affiche des pictogrammes",
+          "x": 64.6,
+          "y": 13.3,
+          "w": 12.7,
+          "h": 29.8,
+          "label": "Document au mur",
           "type": "enigme",
           "enigme": "quiz_picto"
         },
         {
-          "x": 84,
-          "y": 30,
-          "w": 13,
-          "h": 50,
-          "icone": "🚪",
+          "x": 80.1,
+          "y": 20.2,
+          "w": 17.9,
+          "h": 64.8,
           "label": "Porte du laboratoire",
           "type": "porte",
           "vers": "labo",
@@ -90,34 +88,35 @@
           ],
           "verrou": "La porte reste fermée : équipe-toi, repère les anomalies et lis l'affiche."
         }
-      ]
+      ],
+      "nom_visible": false
     },
     "labo": {
       "nom": "Laboratoire",
+      "image": "images/labo.jpg",
       "musique": "sons/ambiance-labo.mp3",
       "fond": "linear-gradient(200deg, #2a1a2e 0%, #10131c 55%, #0f2430 100%)",
       "torche": true,
       "indices": [
         "Il fait sombre : promène ta lampe partout.",
-        "Le post-it donne la recette du code.",
+        "Le tableau blanc et ses post-it donnent la recette du code.",
         "Combien de pictogrammes sur l'affiche du sas ? Puis le numéro du SAMU."
       ],
       "zones": [
         {
-          "x": 12,
-          "y": 22,
-          "w": 12,
-          "h": 20,
-          "icone": "🗒️",
-          "label": "Post-it",
+          "x": 0,
+          "y": 0,
+          "w": 28,
+          "h": 55,
+          "label": "Tableau et post-it",
           "type": "texte",
           "texte": "« Code de sortie = nombre de pictogrammes de danger, suivi du numéro du SAMU. »"
         },
         {
-          "x": 42,
-          "y": 58,
-          "w": 12,
-          "h": 22,
+          "x": 50,
+          "y": 45,
+          "w": 8,
+          "h": 14,
           "icone": "🧯",
           "label": "Extincteur encombré",
           "type": "risque",
@@ -125,21 +124,19 @@
           "message": "Un extincteur doit rester visible et accessible : rien ne doit être stocké devant."
         },
         {
-          "x": 80,
-          "y": 34,
-          "w": 14,
+          "x": 68,
+          "y": 49,
+          "w": 31.5,
           "h": 40,
-          "icone": "🔢",
-          "label": "Digicode de sortie",
+          "label": "Valise cadenassée",
           "type": "enigme",
           "enigme": "code_sortie"
         },
         {
-          "x": 62,
-          "y": 12,
-          "w": 12,
-          "h": 20,
-          "icone": "🚨",
+          "x": 80,
+          "y": 7,
+          "w": 18.5,
+          "h": 41,
           "label": "Sortie de secours",
           "type": "porte",
           "vers": "FIN",
@@ -169,7 +166,7 @@
     "code_sortie": {
       "type": "code",
       "titre": "Digicode",
-      "question": "Entre le code à 3 chiffres.",
+      "question": "La valise contient la clé de la sortie. Entre le code à 3 chiffres.",
       "reponse": "915",
       "donne": "code_sortie",
       "message": "En cas d'accident : le 15 pour le SAMU, ou le 112, numéro d'urgence européen."

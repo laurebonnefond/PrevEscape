@@ -73,7 +73,7 @@ Dans `theme.json`, les chemins partent du dossier `assets/` : on écrit `"images
 | Salle | `image` | `"images/labo.jpg"` (décor) |
 | Salle | `musique` | `"sons/labo.mp3"` (remplace celle du thème) |
 | Zone | `image` | `"images/cle.png"` (remplace l'émoji, aussi affichée dans l'inventaire) |
-| Zone `texte` | `illustration` | `"images/affiche.jpg"` (image dans le message) |
+| Zone `texte`, `objet`, `risque` | `illustration` | `"images/tasse.jpg"` (image dans le message) |
 | Énigme | `illustration` | `"images/plan.jpg"` (image au-dessus de la question) |
 
 Tous ces champs sont facultatifs. Sans image, une zone sans `icone` devient **invisible** : on la pose sur un détail du décor.
@@ -85,7 +85,10 @@ Tous ces champs sont facultatifs. Sans image, une zone sans `icone` devient **in
 - Noms en **minuscules, sans espace ni accent** (`Sas.JPG` ≠ `sas.jpg` sur GitHub Pages)
 
 **Sources libres de droits** : Pixabay (musiques et bruitages), Freesound (filtre CC0).
-Les sons et images du thème `demo` sont des exemples générés, à remplacer.
+Les sons du thème `demo` sont des exemples générés, à remplacer.
+
+**Objet ramassable dessiné dans le décor** : pour qu'il disparaisse vraiment quand on le ramasse, on l'efface du décor et on le pose en calque PNG transparent, recadré exactement sur sa zone (exemple : `lunettes.png` dans la démo).
+**Nom de salle déjà écrit sur le décor** : ajouter `"nom_visible": false` à la salle.
 
 ### 🛠️ Mode debug
 

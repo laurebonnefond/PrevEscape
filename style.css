@@ -89,7 +89,7 @@ main { flex: 1; display: flex; align-items: center; justify-content: center; pad
 #modal-corps { line-height: 1.5; }
 #modal-corps p { margin-bottom: .6rem; }
 #modal-corps li { margin: 0 0 .5rem 1.1rem; }
-.illustration { display: block; width: 100%; border-radius: 8px; margin-bottom: .7rem; }
+.illustration { display: block; max-width: 100%; max-height: 40vh; margin: 0 auto .7rem; border-radius: 8px; }
 #modal-boutons { display: flex; gap: .5rem; justify-content: flex-end; margin-top: 1rem; }
 .btn {
   background: var(--accent); color: #06231a; font-weight: 700;

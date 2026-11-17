@@ -72,7 +72,7 @@ function afficherSalle(avecTransition) {
     // Décor : une image du thème, sinon un fond CSS (dégradé) en attendant
     scene.style.background = s.image ? `center / cover url("${media(s.image)}")` : s.fond;
     scene.classList.toggle('sombre', !!s.torche);
-    $('#nom-salle').textContent = s.nom;
+    $('#nom-salle').textContent = s.nom_visible === false ? '' : s.nom;   // false si le nom est déjà dessiné sur le décor
     jouerMusique(s.musique || T.musique);          // musique de la salle, sinon celle du thème
 
     const zones = $('#zones');
@@ -112,14 +112,7 @@ function afficherInventaire() {
 /* ---------- 4. ACTIONS DES ZONES ---------- */
 const ACTIONS = {
   // Observation, avec illustration facultative (affiche, document, photo…)
-  texte(z) {
-    if (!z.illustration) return dialogue(z.label, z.texte);
-    const div = document.createElement('div');
-    const p = document.createElement('p');
-    p.textContent = z.texte;
-    div.append(creerImage(z.illustration, 'illustration', z.label), p);
-    dialogue(z.label, div);
-  },
+  texte(z) { dialogue(z.label, illustre(z.texte, z.illustration, z.label)); },
 
   // Objet à ramasser : va dans l'inventaire et pose un flag
   objet(z) {
@@ -127,7 +120,7 @@ const ACTIONS = {
     poser(z.flag);
     bruitage('objet');
     afficherSalle();
-    dialogue(`${z.label} récupéré`, z.message);
+    dialogue(`${z.label} récupéré`, illustre(z.message, z.illustration || z.image, z.label));
   },
 
   // Chasse aux risques : cliquer un danger dans le décor
@@ -135,7 +128,7 @@ const ACTIONS = {
     poser(z.flag);
     bruitage('risque');
     afficherSalle();
-    dialogue('⚠️ Risque repéré', z.message);
+    dialogue('⚠️ Risque repéré', illustre(z.message, z.illustration, z.label));
   },
 
   // Ouvre une énigme définie dans theme.json > "enigmes"
@@ -231,6 +224,16 @@ function dialogue(titre, contenu, boutons) {
   $('#modal').hidden = false;
 }
 function fermer() { $('#modal').hidden = true; }
+
+// Texte + image facultative au-dessus (renvoie le texte seul s'il n'y a pas d'image)
+function illustre(texte, image, alt) {
+  if (!image) return texte;
+  const div = document.createElement('div');
+  const p = document.createElement('p');
+  p.textContent = texte;
+  div.append(creerImage(image, 'illustration', alt), p);
+  return div;
+}
 
 // Indices progressifs par salle : theme.json > salles.<id>.indices
 function indice() {
