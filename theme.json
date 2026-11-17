@@ -1,0 +1,95 @@
+{
+  "titre": "Le labo oublié",
+  "intro": "Une alarme retentit dans le laboratoire de chimie. Tu as 15 minutes pour sécuriser les lieux et sortir. Observe, touche, réfléchis.",
+  "duree_min": 15,
+  "depart": "sas",
+
+  "couleurs": { "accent": "#37d6a0", "fond": "#0b0f14" },
+
+  "salles": {
+    "sas": {
+      "nom": "Sas d'entrée",
+      "fond": "linear-gradient(160deg, #1d2b3a 0%, #0e1620 60%, #1a2a22 100%)",
+      "indices": [
+        "On n'entre pas dans un labo sans protéger ses yeux.",
+        "Deux choses n'ont rien à faire ici : regarde la paillasse.",
+        "L'affiche au mur pose une question : réponds-y."
+      ],
+      "zones": [
+        { "x": 8,  "y": 55, "w": 12, "h": 22, "icone": "🥽", "label": "Lunettes de protection",
+          "type": "objet", "flag": "lunettes",
+          "message": "Les lunettes de protection se portent dès l'entrée dans une zone où l'on manipule des produits chimiques." },
+
+        { "x": 34, "y": 60, "w": 11, "h": 20, "icone": "🧪", "label": "Flacon sans étiquette",
+          "type": "risque", "flag": "risque_flacon",
+          "message": "Un produit transvasé doit toujours être réétiqueté : sans étiquette, impossible de connaître le danger." },
+
+        { "x": 52, "y": 62, "w": 10, "h": 18, "icone": "☕", "label": "Tasse de café",
+          "type": "risque", "flag": "risque_cafe",
+          "message": "On ne mange pas et on ne boit pas là où l'on manipule des produits chimiques : risque d'ingestion." },
+
+        { "x": 68, "y": 18, "w": 12, "h": 24, "icone": "📋", "label": "Affiche des pictogrammes",
+          "type": "enigme", "enigme": "quiz_picto" },
+
+        { "x": 84, "y": 30, "w": 13, "h": 50, "icone": "🚪", "label": "Porte du laboratoire",
+          "type": "porte", "vers": "labo",
+          "ouvre_si": ["lunettes", "risque_flacon", "risque_cafe", "quiz_picto"],
+          "verrou": "La porte reste fermée : équipe-toi, repère les anomalies et lis l'affiche." }
+      ]
+    },
+
+    "labo": {
+      "nom": "Laboratoire",
+      "fond": "linear-gradient(200deg, #2a1a2e 0%, #10131c 55%, #0f2430 100%)",
+      "torche": true,
+      "indices": [
+        "Il fait sombre : promène ta lampe partout.",
+        "Le post-it donne la recette du code.",
+        "Combien de pictogrammes sur l'affiche du sas ? Puis le numéro du SAMU."
+      ],
+      "zones": [
+        { "x": 12, "y": 22, "w": 12, "h": 20, "icone": "🗒️", "label": "Post-it",
+          "type": "texte",
+          "texte": "« Code de sortie = nombre de pictogrammes de danger, suivi du numéro du SAMU. »" },
+
+        { "x": 42, "y": 58, "w": 12, "h": 22, "icone": "🧯", "label": "Extincteur encombré",
+          "type": "risque", "flag": "risque_extincteur",
+          "message": "Un extincteur doit rester visible et accessible : rien ne doit être stocké devant." },
+
+        { "x": 80, "y": 34, "w": 14, "h": 40, "icone": "🔢", "label": "Digicode de sortie",
+          "type": "enigme", "enigme": "code_sortie" },
+
+        { "x": 62, "y": 12, "w": 12, "h": 20, "icone": "🚨", "label": "Sortie de secours",
+          "type": "porte", "vers": "FIN",
+          "ouvre_si": ["code_sortie"],
+          "verrou": "La sortie est commandée par le digicode." }
+      ]
+    }
+  },
+
+  "enigmes": {
+    "quiz_picto": {
+      "type": "quiz",
+      "titre": "Affiche des pictogrammes",
+      "question": "L'affiche montre 9 losanges rouges. Que signale celui avec la tête de mort ?",
+      "choix": ["Un produit corrosif", "Une toxicité aiguë", "Un danger pour l'environnement"],
+      "bonne": 1,
+      "donne": "quiz_picto",
+      "message": "Le règlement CLP compte 9 pictogrammes de danger. La tête de mort signale une toxicité aiguë : le produit peut empoisonner rapidement, même à faible dose."
+    },
+    "code_sortie": {
+      "type": "code",
+      "titre": "Digicode",
+      "question": "Entre le code à 3 chiffres.",
+      "reponse": "915",
+      "donne": "code_sortie",
+      "message": "En cas d'accident : le 15 pour le SAMU, ou le 112, numéro d'urgence européen."
+    }
+  },
+
+  "fin": {
+    "gagne": "Le laboratoire est sécurisé. Voici ce que tu as mis en pratique :",
+    "perdu": "L'alarme n'a pas été arrêtée à temps. Voici ce qu'il fallait repérer :",
+    "sources": "Pour aller plus loin : INRS, dossier « Risques chimiques » et règlement CLP."
+  }
+}

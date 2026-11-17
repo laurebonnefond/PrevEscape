@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escape Game Prévention</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Bandeau : titre, chrono, indice, recommencer -->
+  <header>
+    <h1 id="titre">Chargement…</h1>
+    <span id="chrono">--:--</span>
+    <button id="btn-indice">💡 Indice</button>
+    <button id="btn-reset" title="Recommencer">↺</button>
+  </header>
+
+  <!-- La scène : le décor + les zones cliquables, générés par le moteur -->
+  <main>
+    <div id="scene">
+      <div id="zones"></div>
+      <div id="torche"></div>
+      <div id="nom-salle"></div>
+    </div>
+  </main>
+
+  <!-- Inventaire -->
+  <footer id="inventaire"></footer>
+
+  <!-- Fenêtre unique : dialogues, énigmes, débrief -->
+  <div id="modal" hidden>
+    <div id="modal-boite">
+      <h2 id="modal-titre"></h2>
+      <div id="modal-corps"></div>
+      <div id="modal-boutons"></div>
+    </div>
+  </div>
+
+  <script src="engine.js"></script>
+</body>
+</html>
